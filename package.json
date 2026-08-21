@@ -1,0 +1,23 @@
+{
+  "name": "@globalion/projectdoc-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ProjectDoc agent — generates and maintains project artifacts (plan, user flows, architecture, cost). MCP-callable.",
+  "scripts": {
+    "dev": "next dev -p 3013",
+    "build": "next build",
+    "start": "next start -p 3013"
+  },
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}
