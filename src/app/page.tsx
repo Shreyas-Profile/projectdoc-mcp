@@ -67,6 +67,10 @@ export default function Home() {
           <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             <span style={{ fontSize: 12, color: "#94a3b8" }}>Project name</span>
             <input
+              id="projectName"
+              name="projectName"
+              data-testid="project-name"
+              aria-label="Project name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               style={inputStyle}
@@ -75,6 +79,10 @@ export default function Home() {
           <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             <span style={{ fontSize: 12, color: "#94a3b8" }}>Audience</span>
             <input
+              id="audience"
+              name="audience"
+              data-testid="audience"
+              aria-label="Audience"
               value={audience}
               onChange={(e) => setAudience(e.target.value)}
               style={inputStyle}
@@ -84,6 +92,10 @@ export default function Home() {
         <label style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 16 }}>
           <span style={{ fontSize: 12, color: "#94a3b8" }}>Description (the more specific, the better)</span>
           <textarea
+            id="description"
+            name="description"
+            data-testid="description"
+            aria-label="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={4}
@@ -92,9 +104,20 @@ export default function Home() {
         </label>
         <label style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20 }}>
           <span style={{ fontSize: 12, color: "#94a3b8" }}>Goals (optional)</span>
-          <input value={goals} onChange={(e) => setGoals(e.target.value)} style={inputStyle} />
+          <textarea
+            id="goals"
+            name="goals"
+            data-testid="goals"
+            aria-label="Goals"
+            value={goals}
+            onChange={(e) => setGoals(e.target.value)}
+            rows={4}
+            style={{ ...inputStyle, resize: "vertical" }}
+          />
         </label>
         <button
+          id="generate"
+          data-testid="generate"
           onClick={generate}
           disabled={busy}
           style={{
@@ -128,11 +151,11 @@ export default function Home() {
       ) : null}
 
       {artefacts ? (
-        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "1fr 1fr" }}>
-          <Artefact title="Project plan" md={artefacts.plan} />
-          <Artefact title="User flows" md={artefacts.flows} />
-          <Artefact title="Architecture" md={artefacts.architecture} />
-          <Artefact title="Cost report" md={artefacts.cost} />
+        <div data-testid="artefacts" style={{ display: "grid", gap: 16, gridTemplateColumns: "1fr 1fr" }}>
+          <Artefact title="Project plan" testId="artefact-plan" md={artefacts.plan} />
+          <Artefact title="User flows" testId="artefact-flows" md={artefacts.flows} />
+          <Artefact title="Architecture" testId="artefact-architecture" md={artefacts.architecture} />
+          <Artefact title="Cost report" testId="artefact-cost" md={artefacts.cost} />
         </div>
       ) : null}
 
@@ -153,9 +176,10 @@ const inputStyle: React.CSSProperties = {
   fontFamily: "inherit",
 };
 
-function Artefact({ title, md }: { title: string; md: string }) {
+function Artefact({ title, md, testId }: { title: string; md: string; testId?: string }) {
   return (
     <div
+      data-testid={testId}
       style={{
         background: "#111827",
         border: "1px solid #1f2937",
