@@ -13,10 +13,10 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 120;
 
 const bodySchema = z.object({
-  name: z.string().min(2).max(120),
-  description: z.string().min(10).max(20000),
-  audience: z.string().max(2000).optional(),
-  goals: z.string().max(5000).optional(),
+  name: z.string().min(2).max(500),
+  description: z.string().min(10).max(50000),
+  audience: z.string().max(5000).optional(),
+  goals: z.string().max(20000).optional(),
   artefacts: z
     .array(z.enum(["plan", "flows", "architecture", "cost"]))
     .default(["plan", "flows", "architecture", "cost"]),
